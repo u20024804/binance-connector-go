@@ -314,7 +314,7 @@ func (s *MarginAccountNewOrderService) Do(ctx context.Context, opts ...RequestOp
 type MarginAccountNewOrderResponseACK struct {
 	Symbol        string `json:"symbol"`
 	OrderId       int64  `json:"orderId"`
-	ClientOrderId int64  `json:"clientOrderId"`
+	ClientOrderId string `json:"clientOrderId"`
 	IsIsolated    bool   `json:"isIsolated"`
 	TransactTime  uint64 `json:"transactTime"`
 }
