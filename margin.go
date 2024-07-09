@@ -371,7 +371,7 @@ type MarginAccountCancelOrderService struct {
 	c                 *Client
 	symbol            string
 	isIsolated        *string
-	orderId           *int
+	orderId           *int64
 	origClientOrderId *string
 	newClientOrderId  *string
 }
@@ -389,7 +389,7 @@ func (s *MarginAccountCancelOrderService) IsIsolated(isIsolated string) *MarginA
 }
 
 // OrderId set orderId
-func (s *MarginAccountCancelOrderService) OrderId(orderId int) *MarginAccountCancelOrderService {
+func (s *MarginAccountCancelOrderService) OrderId(orderId int64) *MarginAccountCancelOrderService {
 	s.orderId = &orderId
 	return s
 }
@@ -445,7 +445,7 @@ func (s *MarginAccountCancelOrderService) Do(ctx context.Context, opts ...Reques
 type MarginAccountCancelOrderResponse struct {
 	Symbol             string `json:"symbol"`
 	IsIsolated         bool   `json:"isIsolated"`
-	OrderId            int    `json:"orderId"`
+	OrderId            int64  `json:"orderId"`
 	OrigClientOrderId  string `json:"origClientOrderId"`
 	ClientOrderId      string `json:"clientOrderId"`
 	Price              string `json:"price"`
@@ -513,7 +513,7 @@ type MarginAccountCancelAllOrdersResponse struct {
 	Symbol             string `json:"symbol"`
 	IsIsolated         bool   `json:"isIsolated"`
 	OrigClientOrderId  string `json:"origClientOrderId"`
-	OrderId            int    `json:"orderId"`
+	OrderId            int64  `json:"orderId"`
 	OrderListId        int    `json:"orderListId"`
 	ClientOrderId      string `json:"clientOrderId"`
 	Price              string `json:"price"`
@@ -837,7 +837,7 @@ type ForceLiquidationRecordResponse struct {
 	Rows []struct {
 		AvgPrice    string `json:"avgPrice"`
 		ExecutedQty string `json:"executedQty"`
-		OrderId     int    `json:"orderId"`
+		OrderId     int64  `json:"orderId"`
 		Price       string `json:"price"`
 		Qty         string `json:"qty"`
 		Side        string `json:"side"`
@@ -907,7 +907,7 @@ type MarginAccountOrderService struct {
 	c                 *Client
 	symbol            string
 	isIsolated        *string
-	orderId           *int
+	orderId           *int64
 	origClientOrderId *string
 }
 
@@ -924,7 +924,7 @@ func (s *MarginAccountOrderService) IsIsolated(isIsolated string) *MarginAccount
 }
 
 // OrderId set orderId
-func (s *MarginAccountOrderService) OrderId(orderId int) *MarginAccountOrderService {
+func (s *MarginAccountOrderService) OrderId(orderId int64) *MarginAccountOrderService {
 	s.orderId = &orderId
 	return s
 }
@@ -974,7 +974,7 @@ type MarginAccountOrderResponse struct {
 	ExecutedQty        string `json:"executedQty"`
 	IcebergQty         string `json:"icebergQty"`
 	IsWorking          bool   `json:"isWorking"`
-	OrderId            int    `json:"orderId"`
+	OrderId            int64  `json:"orderId"`
 	OrigQty            string `json:"origQty"`
 	Price              string `json:"price"`
 	Side               string `json:"side"`
@@ -1044,7 +1044,7 @@ type MarginAccountOpenOrderResponse struct {
 	ExecutedQty        string `json:"executedQty"`
 	IcebergQty         string `json:"icebergQty"`
 	IsWorking          bool   `json:"isWorking"`
-	OrderId            int    `json:"orderId"`
+	OrderId            int64  `json:"orderId"`
 	OrigQty            string `json:"origQty"`
 	Price              string `json:"price"`
 	Side               string `json:"side"`
@@ -1068,7 +1068,7 @@ type MarginAccountAllOrderService struct {
 	c          *Client
 	symbol     string
 	isIsolated *string
-	orderId    *int
+	orderId    *int64
 	startTime  *uint64
 	endTime    *uint64
 	limit      *int
@@ -1087,7 +1087,7 @@ func (s *MarginAccountAllOrderService) IsIsolated(isIsolated string) *MarginAcco
 }
 
 // OrderId set orderId
-func (s *MarginAccountAllOrderService) OrderId(orderId int) *MarginAccountAllOrderService {
+func (s *MarginAccountAllOrderService) OrderId(orderId int64) *MarginAccountAllOrderService {
 	s.orderId = &orderId
 	return s
 }
@@ -1155,7 +1155,7 @@ type MarginAccountAllOrderResponse struct {
 	ExecutedQty        string `json:"executedQty"`
 	IcebergQty         string `json:"icebergQty"`
 	IsWorking          bool   `json:"isWorking"`
-	OrderId            int    `json:"orderId"`
+	OrderId            int64  `json:"orderId"`
 	OrigQty            string `json:"origQty"`
 	Price              string `json:"price"`
 	Side               string `json:"side"`
@@ -1354,12 +1354,12 @@ type MarginAccountNewOCOResponse struct {
 	MarginBuyBorrowAsset  string `json:"marginBuyBorrowAsset"`
 	Orders                []struct {
 		Symbol        string `json:"symbol"`
-		OrderId       int    `json:"orderId"`
+		OrderId       int64  `json:"orderId"`
 		ClientOrderId string `json:"clientOrderId"`
 	} `json:"orders"`
 	OrderReports []struct {
 		Symbol             string `json:"symbol"`
-		OrderId            int    `json:"orderId"`
+		OrderId            int64  `json:"orderId"`
 		OrderListId        int    `json:"orderListId"`
 		ClientOrderId      string `json:"clientOrderId"`
 		TransactTime       uint64 `json:"transactTime"`
@@ -1466,13 +1466,13 @@ type MarginAccountCancelOCOResponse struct {
 	IsIsolated        bool   `json:"isIsolated"`
 	Orders            []struct {
 		Symbol        string `json:"symbol"`
-		OrderId       int    `json:"orderId"`
+		OrderId       int64  `json:"orderId"`
 		ClientOrderId string `json:"clientOrderId"`
 	} `json:"orders"`
 	OrderReports []struct {
 		Symbol             string `json:"symbol"`
 		OrigClientOrderId  string `json:"origClientOrderId"`
-		OrderId            int    `json:"orderId"`
+		OrderId            int64  `json:"orderId"`
 		OrderListId        int    `json:"orderListId"`
 		ClientOrderId      string `json:"clientOrderId"`
 		Price              string `json:"price"`
@@ -1567,7 +1567,7 @@ type MarginAccountQueryOCOResponse struct {
 	IsIsolated        bool   `json:"isIsolated"`
 	Orders            []struct {
 		Symbol        string `json:"symbol"`
-		OrderId       int    `json:"orderId"`
+		OrderId       int64  `json:"orderId"`
 		ClientOrderId string `json:"clientOrderId"`
 	} `json:"orders"`
 }
@@ -1672,7 +1672,7 @@ type MarginAccountQueryAllOCOResponse struct {
 	IsIsolated        bool   `json:"isIsolated"`
 	Orders            []struct {
 		Symbol        string `json:"symbol"`
-		OrderId       int    `json:"orderId"`
+		OrderId       int64  `json:"orderId"`
 		ClientOrderId string `json:"clientOrderId"`
 	} `json:"orders"`
 }
@@ -1737,7 +1737,7 @@ type MarginAccountQueryOpenOCOResponse struct {
 	IsIsolated        bool   `json:"isIsolated"`
 	Orders            []struct {
 		Symbol        string `json:"symbol"`
-		OrderId       int    `json:"orderId"`
+		OrderId       int64  `json:"orderId"`
 		ClientOrderId string `json:"clientOrderId"`
 	} `json:"orders"`
 }
@@ -1751,7 +1751,7 @@ type MarginAccountQueryTradeListService struct {
 	c          *Client
 	symbol     string
 	isIsolated *string
-	orderId    *int
+	orderId    *int64
 	startTime  *uint64
 	endTime    *uint64
 	fromId     *int
@@ -1771,7 +1771,7 @@ func (s *MarginAccountQueryTradeListService) IsIsolated(isIsolated string) *Marg
 }
 
 // OrderId set orderId
-func (s *MarginAccountQueryTradeListService) OrderId(orderId int) *MarginAccountQueryTradeListService {
+func (s *MarginAccountQueryTradeListService) OrderId(orderId int64) *MarginAccountQueryTradeListService {
 	s.orderId = &orderId
 	return s
 }
@@ -1849,7 +1849,7 @@ type MarginAccountQueryTradeListResponse struct {
 	IsBestMatch     bool   `json:"isBestMatch"`
 	IsBuyer         bool   `json:"isBuyer"`
 	IsMaker         bool   `json:"isMaker"`
-	OrderId         int    `json:"orderId"`
+	OrderId         int64  `json:"orderId"`
 	Price           string `json:"price"`
 	Qty             string `json:"qty"`
 	Symbol          string `json:"symbol"`
