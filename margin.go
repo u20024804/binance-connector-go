@@ -443,9 +443,9 @@ func (s *MarginAccountCancelOrderService) Do(ctx context.Context, opts ...Reques
 
 // MarginAccountCancelOrderResponse define margin account cancel order response
 type MarginAccountCancelOrderResponse struct {
-	Symbol             string `json:"symbol"`
-	IsIsolated         bool   `json:"isIsolated"`
-	OrderId            int64  `json:"orderId"`
+	Symbol     string `json:"symbol"`
+	IsIsolated bool   `json:"isIsolated"`
+	//OrderId            int64  `json:"orderId"`
 	OrigClientOrderId  string `json:"origClientOrderId"`
 	ClientOrderId      string `json:"clientOrderId"`
 	Price              string `json:"price"`
